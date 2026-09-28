@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SortLab | Interactive Sorting Analyzer</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">S</div>
+
+        <div>
+            <h2>SortLab</h2>
+            <span>DSA Learning Tool</span>
+        </div>
+    </div>
+
+    <nav class="navigation">
+
+        <button class="nav-item active"
+                onclick="showSection('dashboard', this)">
+            <span>⌂</span>
+            Dashboard
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('learn', this)">
+            <span>◈</span>
+            Learn
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('visualizer', this)">
+            <span>▶</span>
+            Visualizer
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('compare', this)">
+            <span>⇄</span>
+            Compare
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('pseudocode', this)">
+            <span>⌘</span>
+            Pseudocode
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('complexity', this)">
+            <span>▦</span>
+            Complexity
+        </button>
+
+        <button class="nav-item"
+                onclick="showSection('implementation', this)">
+            <span>&lt;/&gt;</span>
+            C Implementation
+        </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <button class="theme-button" onclick="toggleTheme()">
+            <span id="themeIcon">☾</span>
+            <span id="themeText">Dark Mode</span>
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="main-content">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+            <span class="topbar-label">DATA STRUCTURES & ALGORITHMS</span>
+            <h1 id="pageTitle">Sorting Algorithm Laboratory</h1>
+        </div>
+
+        <div class="topbar-badge">
+            C Programming
+        </div>
+
+    </header>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section id="dashboard" class="page-section active">
+
+        <div class="hero">
+
+            <div class="hero-content">
+
+                <span class="hero-tag">INTERACTIVE DSA LEARNING</span>
+
+                <h2>
+                    Master Sorting Algorithms
+                    <span>Visually.</span>
+                </h2>
+
+                <p>
+                    Explore Insertion Sort and Shell Sort through
+                    interactive visualization, step-by-step execution,
+                    algorithm comparison and complexity analysis.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="primary-button"
+                            onclick="openVisualizer()">
+                        ▶ Start Visualizer
+                    </button>
+
+                    <button class="secondary-button"
+                            onclick="showSection('learn')">
+                        Learn Algorithms
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="hero-decoration">
+
+                <div class="floating-number">01</div>
+                <div class="floating-number">10</div>
+                <div class="floating-number">11</div>
+
+                <div class="sort-symbol">
+                    <span>3</span>
+                    <span>1</span>
+                    <span>4</span>
+                    <span>2</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section-heading">
+            <span>EXPLORE</span>
+            <h3>What can you learn?</h3>
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card"
+                 onclick="showSection('learn')">
+
+                <div class="feature-icon blue">◈</div>
+
+                <h3>Learn Algorithms</h3>
+
+                <p>
+                    Understand how Insertion Sort and Shell Sort
+                    work with simple explanations.
+                </p>
+
+                <span class="card-link">Explore →</span>
+
+            </div>
+
+
+            <div class="feature-card"
+                 onclick="openVisualizer()">
+
+                <div class="feature-icon purple">▶</div>
+
+                <h3>Interactive Visualizer</h3>
+
+                <p>
+                    Enter your own array and watch every sorting
+                    operation step-by-step.
+                </p>
+
+                <span class="card-link">Visualize →</span>
+
+            </div>
+
+
+            <div class="feature-card"
+                 onclick="showSection('compare')">
+
+                <div class="feature-icon green">⇄</div>
+
+                <h3>Compare Algorithms</h3>
+
+                <p>
+                    Compare comparisons, shifts and execution
+                    time using the same input.
+                </p>
+
+                <span class="card-link">Compare →</span>
+
+            </div>
+
+
+            <div class="feature-card"
+                 onclick="showSection('complexity')">
+
+                <div class="feature-icon orange">▦</div>
+
+                <h3>Complexity Analysis</h3>
+
+                <p>
+                    Study time complexity, space complexity
+                    and algorithm characteristics.
+                </p>
+
+                <span class="card-link">Analyze →</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="algorithm-preview">
+
+            <div class="preview-card insertion-preview">
+
+                <div class="preview-top">
+                    <span class="algorithm-number">01</span>
+                    <span class="algorithm-label">ALGORITHM</span>
+                </div>
+
+                <h3>Insertion Sort</h3>
+
+                <p>
+                    Builds the sorted array one element at a time
+                    by inserting each element into its correct position.
+                </p>
+
+                <div class="mini-array">
+                    <span>1</span>
+                    <span>3</span>
+                    <span class="active-mini">2</span>
+                    <span>5</span>
+                </div>
+
+            </div>
+
+
+            <div class="preview-card shell-preview">
+
+                <div class="preview-top">
+                    <span class="algorithm-number">02</span>
+                    <span class="algorithm-label">ALGORITHM</span>
+                </div>
+
+                <h3>Shell Sort</h3>
+
+                <p>
+                    Improves insertion sorting by comparing elements
+                    separated by a decreasing gap.
+                </p>
+
+                <div class="mini-array">
+                    <span>1</span>
+                    <span class="active-mini">4</span>
+                    <span>2</span>
+                    <span>3</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LEARN ================= -->
+
+    <section id="learn" class="page-section">
+
+        <div class="page-heading">
+
+            <span>LEARNING CENTER</span>
+
+            <h2>Learn the Algorithms</h2>
+
+            <p>
+                Understand the idea behind each sorting technique
+                before visualizing it.
+            </p>
+
+        </div>
+
+
+        <div class="learn-grid">
+
+            <div class="algorithm-card">
+
+                <div class="algorithm-card-header">
+                    <div class="big-number">01</div>
+
+                    <div>
+                        <span>INSERTION SORT</span>
+                        <h3>Insertion Sort</h3>
+                    </div>
+                </div>
+
+                <p>
+                    Insertion Sort works similarly to arranging cards
+                    in your hand. Each new element is picked and
+                    inserted into its correct position among the
+                    previously sorted elements.
+                </p>
+
+                <div class="concept-box">
+
+                    <strong>How it works</strong>
+
+                    <ol>
+                        <li>Start from the second element.</li>
+                        <li>Select the current element as the key.</li>
+                        <li>Compare it with elements on the left.</li>
+                        <li>Shift larger elements one position right.</li>
+                        <li>Insert the key into the correct position.</li>
+                    </ol>
+
+                </div>
+
+                <button class="primary-button"
+                        onclick="startAlgorithm('insertion')">
+                    Try Insertion Sort →
+                </button>
+
+            </div>
+
+
+            <div class="algorithm-card">
+
+                <div class="algorithm-card-header">
+                    <div class="big-number">02</div>
+
+                    <div>
+                        <span>SHELL SORT</span>
+                        <h3>Shell Sort</h3>
+                    </div>
+                </div>
+
+                <p>
+                    Shell Sort is an improved version of insertion
+                    sorting. It first compares elements that are
+                    far apart and gradually reduces the gap.
+                </p>
+
+                <div class="concept-box">
+
+                    <strong>How it works</strong>
+
+                    <ol>
+                        <li>Choose an initial gap.</li>
+                        <li>Compare elements separated by the gap.</li>
+                        <li>Perform insertion-style sorting.</li>
+                        <li>Reduce the gap.</li>
+                        <li>Finish with a gap of 1.</li>
+                    </ol>
+
+                </div>
+
+                <button class="primary-button"
+                        onclick="startAlgorithm('shell')">
+                    Try Shell Sort →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="concept-comparison">
+
+            <h3>Key Difference</h3>
+
+            <div class="difference-row">
+
+                <div>
+                    <strong>Insertion Sort</strong>
+                    <p>Works directly with adjacent sorted elements.</p>
+                </div>
+
+                <div class="difference-arrow">VS</div>
+
+                <div>
+                    <strong>Shell Sort</strong>
+                    <p>Uses gaps to move elements faster over distance.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= VISUALIZER ================= -->
+
+    <section id="visualizer" class="page-section">
+
+        <div class="page-heading">
+
+            <span>INTERACTIVE VISUALIZER</span>
+
+            <h2>Watch Sorting Happen</h2>
+
+            <p>
+                Enter your own array and inspect every comparison,
+                shift and movement.
+            </p>
+
+        </div>
+
+
+        <div class="visualizer-control-card">
+
+            <div class="control-group">
+
+                <label for="algorithmSelect">
+                    SELECT ALGORITHM
+                </label>
+
+                <select id="algorithmSelect">
+                    <option value="insertion">
+                        Insertion Sort
+                    </option>
+
+                    <option value="shell">
+                        Shell Sort
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="control-group array-input-group">
+
+                <label for="arrayInput">
+                    ENTER ARRAY
+                </label>
+
+                <input
+                    type="text"
+                    id="arrayInput"
+                    value="8, 3, 5, 1, 9, 2, 6"
+                    placeholder="Example: 8, 3, 5, 1, 9"
+                >
+
+            </div>
+
+
+            <button class="primary-button"
+                    onclick="startVisualization()">
+                ▶ Visualize
+            </button>
+
+        </div>
+
+
+        <div class="visualizer-info-row">
+
+            <div class="info-pill">
+                <span>ALGORITHM</span>
+                <strong id="currentAlgorithm">Insertion Sort</strong>
+            </div>
+
+            <div class="info-pill">
+                <span>STEP</span>
+                <strong id="stepCounter">0 / 0</strong>
+            </div>
+
+            <div class="info-pill">
+                <span>COMPARISONS</span>
+                <strong id="comparisonCounter">0</strong>
+            </div>
+
+            <div class="info-pill">
+                <span>SHIFTS</span>
+                <strong id="shiftCounter">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="visualizer-stage">
+
+            <div class="stage-header">
+
+                <div>
+                    <span class="stage-label">CURRENT STATE</span>
+                    <h3>Array Visualization</h3>
+                </div>
+
+                <div id="gapDisplay" class="gap-display">
+                    Gap: —
+                </div>
+
+            </div>
+
+
+            <div id="barsContainer" class="array-visualization">
+
+                <div class="empty-visualizer">
+                    Click "Visualize" to begin
+                </div>
+
+            </div>
+
+
+            <div id="visualizerMessage"
+                 class="visualizer-message">
+                Enter an array and start the visualization.
+            </div>
+
+
+            <div class="visualizer-controls">
+
+                <button class="control-button"
+                        onclick="previousStep()">
+                    ← Previous
+                </button>
+
+                <button class="control-button play-button"
+                        onclick="autoPlay()">
+                    ▶ Auto Play
+                </button>
+
+                <button class="control-button"
+                        onclick="nextStep()">
+                    Next →
+                </button>
+
+                <button class="control-button reset-button"
+                        onclick="resetVisualizer()">
+                    ↻ Reset
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="legend">
+
+            <div>
+                <span class="legend-box normal"></span>
+                Normal
+            </div>
+
+            <div>
+                <span class="legend-box current"></span>
+                Current
+            </div>
+
+            <div>
+                <span class="legend-box compare"></span>
+                Compared
+            </div>
+
+            <div>
+                <span class="legend-box shifted"></span>
+                Shifted
+            </div>
+
+            <div>
+                <span class="legend-box sorted"></span>
+                Sorted
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COMPARE ================= -->
+
+    <section id="compare" class="page-section">
+
+        <div class="page-heading">
+
+            <span>ALGORITHM COMPARISON</span>
+
+            <h2>Insertion Sort vs Shell Sort</h2>
+
+            <p>
+                Give both algorithms the same input and compare
+                their operations side-by-side.
+            </p>
+
+        </div>
+
+
+        <div class="compare-input-card">
+
+            <label for="compareInput">
+                INPUT ARRAY
+            </label>
+
+            <div class="compare-input-row">
+
+                <input
+                    type="text"
+                    id="compareInput"
+                    value="8, 3, 5, 1, 9, 2, 6"
+                    placeholder="Example: 8, 3, 5, 1, 9, 2, 6"
+                >
+
+                <button class="primary-button"
+                        onclick="runComparison()">
+                    ⇄ Compare
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="same-input-banner">
+
+            <span class="banner-icon">✓</span>
+
+            <div>
+                <strong>Same Input for Both Algorithms</strong>
+
+                <p>
+                    Both algorithms receive exactly the same
+                    array so their operations can be compared fairly.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="comparison-cards">
+
+            <!-- INSERTION -->
+
+            <div class="comparison-card insertion-card">
+
+                <div class="comparison-header">
+
+                    <div class="comparison-title">
+
+                        <span class="comparison-number">01</span>
+
+                        <div>
+                            <span>ALGORITHM</span>
+                            <h3>Insertion Sort</h3>
+                        </div>
+
+                    </div>
+
+                    <span class="status-dot">
+                        ●
+                    </span>
+
+                </div>
+
+
+                <div class="comparison-array-title">
+                    Sorted Result
+                </div>
+
+                <div id="insertionResult"
+                     class="comparison-array">
+
+                    <span>—</span>
+
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <div class="metric-box">
+
+                        <span>COMPARISONS</span>
+
+                        <strong id="insertionComparisons">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="metric-box">
+
+                        <span>SHIFTS</span>
+
+                        <strong id="insertionShifts">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="metric-box wide">
+
+                        <span>EXECUTION TIME</span>
+
+                        <strong id="insertionTime">
+                            0 ms
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHELL -->
+
+            <div class="comparison-card shell-card">
+
+                <div class="comparison-header">
+
+                    <div class="comparison-title">
+
+                        <span class="comparison-number">02</span>
+
+                        <div>
+                            <span>ALGORITHM</span>
+                            <h3>Shell Sort</h3>
+                        </div>
+
+                    </div>
+
+                    <span class="status-dot">
+                        ●
+                    </span>
+
+                </div>
+
+
+                <div class="comparison-array-title">
+                    Sorted Result
+                </div>
+
+                <div id="shellResult"
+                     class="comparison-array">
+
+                    <span>—</span>
+
+                </div>
+
+
+                <div class="metric-grid">
+
+                    <div class="metric-box">
+
+                        <span>COMPARISONS</span>
+
+                        <strong id="shellComparisons">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="metric-box">
+
+                        <span>SHIFTS</span>
+
+                        <strong id="shellShifts">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <div class="metric-box wide">
+
+                        <span>EXECUTION TIME</span>
+
+                        <strong id="shellTime">
+                            0 ms
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="comparison-summary">
+
+            <div class="summary-title">
+
+                <span>RESULT</span>
+
+                <h3>Sorted Output</h3>
+
+            </div>
+
+            <div id="comparisonSortedResult"
+                 class="final-sorted-array">
+                —
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PSEUDOCODE ================= -->
+
+    <section id="pseudocode" class="page-section">
+
+        <div class="page-heading">
+
+            <span>ALGORITHM LOGIC</span>
+
+            <h2>Pseudocode</h2>
+
+            <p>
+                Read the algorithm logic before looking at the C code.
+            </p>
+
+        </div>
+
+
+        <div class="pseudo-grid">
+
+            <div class="pseudo-card">
+
+                <div class="code-header">
+
+                    <span class="code-number">01</span>
+
+                    <div>
+                        <span>INSERTION SORT</span>
+                        <h3>Algorithm</h3>
+                    </div>
+
+                </div>
+
+<pre><code>INSERTION-SORT(A)
+
+for i = 1 to length(A)-1
+
+    key = A[i]
+
+    j = i - 1
+
+    while j >= 0 and A[j] > key
+
+        A[j + 1] = A[j]
+
+        j = j - 1
+
+    A[j + 1] = key
+
+end</code></pre>
+
+                <button class="secondary-button"
+                        onclick="startAlgorithm('insertion')">
+                    Visualize →
+                </button>
+
+            </div>
+
+
+            <div class="pseudo-card">
+
+                <div class="code-header">
+
+                    <span class="code-number">02</span>
+
+                    <div>
+                        <span>SHELL SORT</span>
+                        <h3>Algorithm</h3>
+                    </div>
+
+                </div>
+
+<pre><code>SHELL-SORT(A)
+
+gap = n / 2
+
+while gap > 0
+
+    for i = gap to n-1
+
+        temp = A[i]
+
+        j = i
+
+        while j >= gap
+              and A[j-gap] > temp
+
+            A[j] = A[j-gap]
+
+            j = j-gap
+
+        A[j] = temp
+
+    gap = gap / 2
+
+end</code></pre>
+
+                <button class="secondary-button"
+                        onclick="startAlgorithm('shell')">
+                    Visualize →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COMPLEXITY ================= -->
+
+    <section id="complexity" class="page-section">
+
+        <div class="page-heading">
+
+            <span>PERFORMANCE ANALYSIS</span>
+
+            <h2>Complexity Analysis</h2>
+
+            <p>
+                Understand the theoretical cost of both algorithms.
+            </p>
+
+        </div>
+
+
+        <div class="complexity-table-wrapper">
+
+            <table class="complexity-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Best Case</th>
+                        <th>Average Case</th>
+                        <th>Worst Case</th>
+                        <th>Space</th>
+                        <th>Stable</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            <strong>Insertion Sort</strong>
+                        </td>
+
+                        <td class="green-text">
+                            O(n)
+                        </td>
+
+                        <td>
+                            O(n²)
+                        </td>
+
+                        <td class="orange-text">
+                            O(n²)
+                        </td>
+
+                        <td>
+                            O(1)
+                        </td>
+
+                        <td>
+                            Yes
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            <strong>Shell Sort</strong>
+                        </td>
+
+                        <td>
+                            Depends on gap sequence
+                        </td>
+
+                        <td>
+                            Depends on gap sequence
+                        </td>
+
+                        <td>
+                            Depends on gap sequence
+                        </td>
+
+                        <td>
+                            O(1)
+                        </td>
+
+                        <td>
+                            No
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="complexity-notes">
+
+            <div class="note-card">
+
+                <span>01</span>
+
+                <h3>Insertion Sort</h3>
+
+                <p>
+                    Very efficient when the input is already nearly
+                    sorted. It requires constant extra space.
+                </p>
+
+            </div>
+
+
+            <div class="note-card">
+
+                <span>02</span>
+
+                <h3>Shell Sort</h3>
+
+                <p>
+                    Its performance depends on the chosen gap sequence.
+                    This project uses the halving-gap sequence.
+                </p>
+
+            </div>
+
+
+            <div class="note-card">
+
+                <span>03</span>
+
+                <h3>Important</h3>
+
+                <p>
+                    Execution time measured in the browser can vary
+                    for small inputs, so operation counts are useful
+                    for understanding algorithm behaviour.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= C IMPLEMENTATION ================= -->
+
+    <section id="implementation" class="page-section">
+
+        <div class="page-heading">
+
+            <span>C PROGRAMMING</span>
+
+            <h2>C Implementation</h2>
+
+            <p>
+                See how the algorithms are implemented in C.
+            </p>
+
+        </div>
+
+
+        <div class="implementation-tabs">
+
+            <button class="implementation-tab active"
+                    onclick="showCode('insertionCode', this)">
+                Insertion Sort
+            </button>
+
+            <button class="implementation-tab"
+                    onclick="showCode('shellCode', this)">
+                Shell Sort
+            </button>
+
+        </div>
+
+
+        <div id="insertionCode"
+             class="implementation-code active">
+
+<pre><code>#include &lt;stdio.h&gt;
+
+void insertionSort(int arr[], int n)
+{
+    for (int i = 1; i &lt; n; i++)
+    {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j &gt;= 0 &amp;&amp; arr[j] &gt; key)
+        {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = key;
+    }
+}</code></pre>
+
+        </div>
+
+
+        <div id="shellCode"
+             class="implementation-code">
+
+<pre><code>#include &lt;stdio.h&gt;
+
+void shellSort(int arr[], int n)
+{
+    for (int gap = n / 2;
+         gap &gt; 0;
+         gap /= 2)
+    {
+        for (int i = gap; i &lt; n; i++)
+        {
+            int temp = arr[i];
+            int j = i;
+
+            while (j &gt;= gap &amp;&amp;
+                   arr[j - gap] &gt; temp)
+            {
+                arr[j] = arr[j - gap];
+                j -= gap;
+            }
+
+            arr[j] = temp;
+        }
+    }
+}</code></pre>
+
+        </div>
+
+
+        <div class="implementation-note">
+
+            <strong>Project Implementation</strong>
+
+            <p>
+                SortLab uses C for the core DSA implementation and
+                JavaScript for the browser-based interactive learning
+                interface.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
